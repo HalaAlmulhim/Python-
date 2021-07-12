@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read(One)</title>
+    <style>
+        body{
+            margin: 0 55px;
+        }
+        .last{
+            margin-top: 154px;
+        }
+        .back{
+            margin-left: 930px;
+        }
+    </style>
+</head>
+<body>
+    <a href="/shows/" class="back">Go Back</a>
+    <div class="contain">
+        <h1>TV SHOW {{show.id}}</h1>
+        <br>
+        <p>Title: {{show.title}}</p>
+        <p>NetWork: {{show.network}}</p>
+        <p>Release Date: {{show.release_date}}</p>
+        <p>Description: {{show.description}}</p>
+    </div>
+    <div class="last">
+        <p>Last Updated: {{show.updated_at}}</p>
+        <span><a href="/shows/{{show.id}}/edit">Edit</a> |  <a href="/shows/{{show.id}}/delete">Delete</a> </span> 
+    </div>
+    
+</body>
+</html>

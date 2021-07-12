@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: column;
+            margin: 20px;
+        }
+        a{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+    </style>
+    <div class="container">
+        <a href="/logout">Log Out</a>
+        <h1>Success!! Welcome, {{request.session.frist_name}} {{request.session.last_name}}</h1>
+        <h5>Successfully registration (or logged in)!</h5>
+    </div>
+</head>
+<body>
+    
+</body>
+</html>

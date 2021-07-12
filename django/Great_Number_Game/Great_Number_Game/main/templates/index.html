@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greate Number Game</title>
+    <style>
+        .container {
+            padding-top: 100px;
+            text-align: center;
+        }
+
+        h3 {
+            line-height: 0.5;
+        }
+
+        input {
+            text-align: center;
+            font-size: 20px;
+            height: 30px;
+            width: 150px;
+            display: block;
+            margin: 50px auto 15px auto;
+        }
+
+        button {
+            height: 28px;
+            width: 80px;
+            border: none;
+            background-color: rgb(17, 60, 57);
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to the Greate Number Game</h1>
+        <h3>I am thinking of a number between 1 and 100</h3>
+        <h3>Take a Guess</h3>
+
+        {% if request.session.result == "correct" %}
+        <div style="height: 300px; width: 300px; margin: 0 auto; background: forestgreen; color: white;">
+            <p style="font-size: 30px;padding-top: 125px;">{{request.session.num}} was the number!</p>
+            <form action="/clear" method="post">
+                {% csrf_token %}
+                <button>Play Again</button>
+            </form>
+        </div>
+        <style>
+            .form {
+                display: none;
+            }
+        </style>
+        {% elif request.session.result == "high" %}
+        <div style="height: 300px; width: 300px; margin: 0 auto; background: red; color: white;">
+            <p style="font-size: 30px;padding-top: 125px;">Too high!</p>
+        </div>
+        {% elif request.session.result == "low" %}
+        <div style="height: 300px; width: 300px; margin: 0 auto; background: red; color: white;">
+            <p style="font-size: 30px;padding-top: 125px;">Too low!</p>
+        </div>
+        {% endif %}
+
+        <form action="/result" method="post" class="form">
+            {% csrf_token %}
+            <input type="text" name="guess">
+            <button>Submit</button>
+        </form>
+
+    </div>
+
+
+</body>
+
+</html>
