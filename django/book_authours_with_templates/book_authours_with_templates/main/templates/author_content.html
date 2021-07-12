@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books & Authors</title>
+    <style>
+        .container{
+            padding: 20px;
+        }
+        h5{
+            font-size: 20px;
+            display: inline-block;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="fpart">
+            <h1>{{author_one.first_name}} {{author_one.last_name}}</h1>
+            <h5>ID: {{author_one.id}}</h5>
+            <p><h5>Notes: </h5>{{author_one.notes}} </p>
+        </div>
+        <div class="spart">
+            <h5>Books: </h5>
+            <ul>
+                {% for book in all_books_author_one %}
+                <li>{{book.title}}</li>
+                {% endfor %}
+            </ul>
+            <form action="add_authors" method="POST">
+                {% csrf_token%}
+                <select name="book" id="" aria-placeholder="- select an book- ">
+                    {% for book in all_books %}
+                    <option value={{book.id}}>{{book.title}}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Add</button>
+            </form>
+        </div>
+        {% for book in author_one %}
+            <div>
+                <h1>{{book.title}}</h1>
+                <h5>ID: {{book.id}}</h5>
+                <p><h5>Description: </h5>{{book.desc}}</p>
+            </div>
+        {% endfor %}
+    </div>    
+</body>
+</html>

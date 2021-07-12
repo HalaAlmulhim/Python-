@@ -1,0 +1,300 @@
+    raise self.model.DoesNotExist(
+dojo_ninjas_app.models.Dojos.DoesNotExist: Dojos matching query does not exist.
+>>> c= Dojos.objects.get(id=6)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\db\models\query.py", line 406, in get
+    raise self.model.DoesNotExist(
+dojo_ninjas_app.models.Dojos.DoesNotExist: Dojos matching query does not exist.
+>>> firstdojo=Dojos.objects.create(name="hala", city="SA", state="SA")
+>>> seconddojo=Dojos.objects.create(name="reem", city="SA", state="LA")
+>>> thirddojo=Dojos.objects.create(name="ghada", city="SA", state="SA")
+>>> ninja1=Ninjas.objects.create(first_name="hala ninja", last_name="almulhim ninj
+a", dojo=firstdojo)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\db\models\query.py", line 420, in create
+    obj = self.model(**kwargs)
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\db\models\base.py", line 501, in __init__
+    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name
+__, kwarg))
+TypeError: Ninjas() got an unexpected keyword argument 'dojo'
+>>> Dojos.objects.all().__dict__
+{'model': <class 'dojo_ninjas_app.models.Dojos'>, '_db': None, '_hints': {}, 'qu
+ery': <django.db.models.sql.query.Query object at 0x0000000003EDEA30>, '_result_
+cache': None, '_sticky_filter': False, '_for_write': False, '_prefetch_related_l
+ookups': (), '_prefetch_done': False, '_known_related_objects': {}, '_iterable_c
+lass': <class 'django.db.models.query.ModelIterable'>, '_fields': None}
+>>> Dojos.objects.all().__dic__
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute '__dic__'
+>>> Dojos.objects.all()
+<QuerySet [<Dojos: Dojos object (7)>, <Dojos: Dojos object (8)>, <Dojos: Dojos o
+bject (9)>, <Dojos: Dojos object (10)>, <Dojos: Dojos object (11)>, <Dojos: Dojo
+s object (12)>]>
+>>> c= Dojos.objects.get(id=5)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\db\models\query.py", line 406, in get
+    raise self.model.DoesNotExist(
+dojo_ninjas_app.models.Dojos.DoesNotExist: Dojos matching query does not exist.
+>>> c= Dojos.objects.get(id=7)
+>>> c.detele()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Dojos' object has no attribute 'detele'
+>>> ninja1=Ninjas.objects.create(first_name="hala ninja", last_name="almulhim ninj
+a", dojo=firstdojo)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\db\models\query.py", line 420, in create
+    obj = self.model(**kwargs)
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\db\models\base.py", line 501, in __init__
+    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name
+__, kwarg))
+TypeError: Ninjas() got an unexpected keyword argument 'dojo'
+>>> ninja1=Ninjas.objects.create(first_name="hala ninja", last_name="almulhim ninj
+a", ninja=firstdojo)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\db\models\query.py", line 420, in create
+    obj = self.model(**kwargs)
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\db\models\base.py", line 501, in __init__
+    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name
+__, kwarg))
+TypeError: Ninjas() got an unexpected keyword argument 'ninja'
+>>> ^Z
+
+now exiting InteractiveConsole...
+
+(Test) C:\Users\Asus\Documents\python_stack\django\django_intro\dojo_ninjas_proj
+>python manage.py makemigrations
+No changes detected
+
+(Test) C:\Users\Asus\Documents\python_stack\django\django_intro\dojo_ninjas_proj
+>python manage.py shell
+Python 3.8.9 (tags/v3.8.9:a743f81, Apr  6 2021, 14:02:34) [MSC v.1928 64 bit (AM
+D64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> ninja1=Ninjas.objects.create(first_name="layla ninja", last_name="asker ninj
+a", dojo=firstdojo)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Ninjas' is not defined
+>>> ninja1=Ninjas.objects.create(first_name="hala ninja", last_name="almulhim ninj
+a", dojo_id=firstdojo)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Ninjas' is not defined
+>>> Dojos.objects.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Dojos' is not defined
+>>> Dojos.objects.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Dojos' is not defined
+>>> from dojo_ninjas_app.models import *
+>>> Dojos.objects.all()
+<QuerySet [<Dojos: Dojos object (10)>, <Dojos: Dojos object (11)>, <Dojos: Dojos
+ object (12)>]>
+>>> fdojo=Dojos.objects.get(id=10)
+>>> sdojo=Dojos.objects.get(id=11)
+>>> tdojo=Dojos.objects.get(id=12)
+>>> ninja1=Ninjas.objects.create(first_name="hala ninja", last_name="almulhim ninj
+a", dojo_id=fdojo)
+>>> ninja1=Ninjas.objects.create(first_name="reem ninja", last_name="almulhim n
+inja", dojo_id=sdojo)
+>>> ninja1=Ninjas.objects.create(first_name="ghada ninja", last_name="almulhim nin
+ja", dojo_id=tdojo)
+>>> ninja1=Ninjas.objects.create(first_name=" raneem ninja", last_name=" alfarhan ni
+nja", dojo_id=fdojo)
+>>> ninja1=Ninjas.objects.create(first_name="sara ninja", last_name="alfarhan ni
+nja", dojo_id=fdojo)
+>>> ninja1=Ninjas.objects.create(first_name="saja ninja", last_name="Edris n
+inja", dojo_id=tdojo)
+>>> ninja1=Ninjas.objects.create(first_name="Amirah ninja", last_name="Edris n
+inja", dojo_id=tdojo)
+>>> ninja1=Ninjas.objects.create(first_name="thani ninja", last_name="altimimi
+ ninja", dojo_id=sdojo)
+>>> ninja1=Ninjas.objects.create(first_name="lubna ninja", last_name="altimimi
+ ninja", dojo_id=sdojo)
+>>> Ninjas.objects.fdojo
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Manager' object has no attribute 'fdojo'
+>>> Ninjas.objects.filter(dojo_id=Dojos.objects.get(id=10)_)
+  File "<console>", line 1
+    Ninjas.objects.filter(dojo_id=Dojos.objects.get(id=10)_)
+                                                          ^
+SyntaxError: invalid syntax
+>>> Ninjas.objects.filter(dojo_id=Dojos.objects.get(id=10))
+<QuerySet [<Ninjas: Ninjas object (1)>, <Ninjas: Ninjas object (4)>, <Ninjas: Ni
+njas object (5)>]>
+>>> Ninjas.objects.filter(dojo_id=Dojos.objects.get(id=12))
+<QuerySet [<Ninjas: Ninjas object (3)>, <Ninjas: Ninjas object (6)>, <Ninjas: Ni
+njas object (7)>]>
+>>>
+KeyboardInterrupt
+>>> Ninjas.objects.last().dojo_id.last()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Dojos' object has no attribute 'last'
+>>> Ninjas.objects.get(id=9).dojo_id.last()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Dojos' object has no attribute 'last'
+>>> Ninjas.objects.get(id=9)
+<Ninjas: Ninjas object (9)>
+>>> Ninjas.objects.get(id=9).dojo_id
+<Dojos: Dojos object (11)>
+>>> Ninjas.objects.get(id=9).dojo_id.__dict__
+{'_state': <django.db.models.base.ModelState object at 0x0000000003F25970>, 'id'
+: 11, 'name': 'thani', 'city': 'SA', 'state': 'LA', 'created_at': datetime.datet
+ime(2021, 4, 21, 11, 57, 32, 670142, tzinfo=<UTC>), 'updated_at': datetime.datet
+ime(2021, 4, 21, 11, 57, 32, 671142, tzinfo=<UTC>)}
+>>> ^Z
+
+now exiting InteractiveConsole...
+
+(Test) C:\Users\Asus\Documents\python_stack\django\django_intro\dojo_ninjas_proj
+>python manage.py makemigrations
+You are trying to add a non-nullable field 'desc' to dojos without a default; we
+ can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null
+value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g.
+ timezone.now
+Type 'exit' to exit this prompt
+>>> 1
+Migrations for 'dojo_ninjas_app':
+  dojo_ninjas_app\migrations\0002_dojos_desc.py
+    - Add field desc to dojos
+
+(Test) C:\Users\Asus\Documents\python_stack\django\django_intro\dojo_ninjas_proj
+>python manage.py makemigrations
+No changes detected
+
+(Test) C:\Users\Asus\Documents\python_stack\django\django_intro\dojo_ninjas_proj
+>python manage.py makemigrations
+You are trying to add a non-nullable field 'mid_name' to ninjas without a defaul
+t; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null
+value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g.
+ timezone.now
+Type 'exit' to exit this prompt
+>>> Ninjas.objects.all().__dict__
+Invalid input: name 'Ninjas' is not defined
+>>> Ninjas.objects.value()
+Invalid input: name 'Ninjas' is not defined
+>>> Ninjas.objects.all()
+Invalid input: name 'Ninjas' is not defined
+>>> from dojo_ninjas_app.models import *
+Invalid input: invalid syntax (<string>, line 1)
+>>> from dojo_ninjas_app.models import *
+Invalid input: invalid syntax (<string>, line 1)
+>>> ^Z
+Traceback (most recent call last):
+  File "manage.py", line 21, in <module>
+    main()
+  File "manage.py", line 17, in main
+    execute_from_command_line(sys.argv)
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\core\management\__init__.py", line 381, in execute_from_command_line
+    utility.execute()
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\core\management\__init__.py", line 375, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\core\management\base.py", line 323, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\core\management\base.py", line 364, in execute
+    output = self.handle(*args, **options)
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\core\management\base.py", line 83, in wrapped
+    res = handle_func(*args, **kwargs)
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\core\management\commands\makemigrations.py", line 164, in handle
+    changes = autodetector.changes(
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\db\migrations\autodetector.py", line 43, in changes
+    changes = self._detect_changes(convert_apps, graph)
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\db\migrations\autodetector.py", line 185, in _detect_changes
+    self.generate_added_fields()
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\db\migrations\autodetector.py", line 850, in generate_added_fields
+    self._generate_added_field(app_label, model_name, field_name)
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\db\migrations\autodetector.py", line 871, in _generate_added_field
+    field.default = self.questioner.ask_not_null_addition(field_name, model_name
+)
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\db\migrations\questioner.py", line 159, in ask_not_null_addition
+    return self._ask_default()
+  File "C:\Users\Asus\Documents\python_stack\my_environments\Test\lib\site-packa
+ges\django\db\migrations\questioner.py", line 130, in _ask_default
+    code = input(prompt)
+EOFError
+
+(Test) C:\Users\Asus\Documents\python_stack\django\django_intro\dojo_ninjas_proj
+>python manage.py makemigrations
+You are trying to add a non-nullable field 'mid_name' to ninjas without a defaul
+t; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null
+value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g.
+ timezone.now
+Type 'exit' to exit this prompt
+>>> 1
+Migrations for 'dojo_ninjas_app':
+  dojo_ninjas_app\migrations\0003_ninjas_mid_name.py
+    - Add field mid_name to ninjas
+
+(Test) C:\Users\Asus\Documents\python_stack\django\django_intro\dojo_ninjas_proj
+>python manage.py shell
+Python 3.8.9 (tags/v3.8.9:a743f81, Apr  6 2021, 14:02:34) [MSC v.1928 64 bit (AM
+D64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from dojo_ninjas_app.models import *
+>>>

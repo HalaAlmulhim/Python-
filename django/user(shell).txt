@@ -1,0 +1,147 @@
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\Asus>cd c:\Users\Asus\Documents\python_stack\my_environments
+
+c:\Users\Asus\Documents\python_stack\my_environments>call Test\Scripts\activate
+
+(Test) c:\Users\Asus\Documents\python_stack\my_environments>cd c:\Users\Asus\Doc
+uments\python_stack\django\django_intro
+
+(Test) c:\Users\Asus\Documents\python_stack\django\django_intro>cd usershell
+
+(Test) c:\Users\Asus\Documents\python_stack\django\django_intro\usershell>python
+ manage.py makemigrations
+Migrations for 'usershell_app':
+  usershell_app\migrations\0002_user.py
+    - Create model User
+
+(Test) c:\Users\Asus\Documents\python_stack\django\django_intro\usershell>python
+ manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, usershell_app
+Running migrations:
+  Applying usershell_app.0002_user... OK
+
+(Test) c:\Users\Asus\Documents\python_stack\django\django_intro\usershell>python
+ manage.py shell
+Python 3.8.9 (tags/v3.8.9:a743f81, Apr  6 2021, 14:02:34) [MSC v.1928 64 bit (AM
+D64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from usershellApp.models import User
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+ModuleNotFoundError: No module named 'usershellApp'
+>>> from usershell_app.models import User
+>>> User.objexts.create(first_name="layla" , last_name="asker", email_address ="
+layla.rashed1@yahoo.com", age=28)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'User' has no attribute 'objexts'
+>>> User.objects.create(first_name="layla" , last_name="asker", email_address ="
+layla.rashed1@yahoo.com", age=28)
+<User: User object (1)>
+>>> User.objects.create(first_name="hala" , last_name="almulhim", email_address
+="hala12@yahoo.com", age=23)
+<User: User object (2)>
+>>> User.objects.create(first_name="saja" , last_name="alhimiry", email_address
+="saja2@yahoo.com", age=25)
+<User: User object (3)>
+>>> User.objects.all()
+<QuerySet [<User: User object (1)>, <User: User object (2)>, <User: User object
+(3)>]>
+>>> ^Z
+
+now exiting InteractiveConsole...
+
+(Test) c:\Users\Asus\Documents\python_stack\django\django_intro\usershell>python
+ manage.py shell
+Python 3.8.9 (tags/v3.8.9:a743f81, Apr  6 2021, 14:02:34) [MSC v.1928 64 bit (AM
+D64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> User.objext.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'User' is not defined
+>>> from usershellApp.models import User
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+ModuleNotFoundError: No module named 'usershellApp'
+>>> from usershell_app.models import User
+>>> User.objext.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'User' has no attribute 'objext'
+>>> User.objects.all()
+<QuerySet [<User: User object (1)>, <User: User object (2)>, <User: User object
+(3)>]>
+>>> User.objects.last()
+<User: User object (3)>
+>>> User.objects.last()__dict__
+  File "<console>", line 1
+    User.objects.last()__dict__
+                       ^
+SyntaxError: invalid syntax
+>>> User.objects.last().__dict__
+{'_state': <django.db.models.base.ModelState object at 0x0000000003F077C0>, 'id'
+: 3, 'first_name': 'saja', 'last_name': 'alhimiry', 'email_address': 'saja2@yaho
+o.com', 'age': 25, 'created_at': datetime.datetime(2021, 4, 19, 23, 8, 1, 104019
+, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 4, 19, 23, 8, 1, 104019,
+tzinfo=<UTC>)}
+>>> User.objects.first().__dict__
+{'_state': <django.db.models.base.ModelState object at 0x0000000003F07520>, 'id'
+: 1, 'first_name': 'layla', 'last_name': 'asker', 'email_address': 'layla.rashed
+1@yahoo.com', 'age': 28, 'created_at': datetime.datetime(2021, 4, 19, 23, 6, 35,
+ 241108, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 4, 19, 23, 6, 35,
+241108, tzinfo=<UTC>)}
+>>> User.objects.get(id=3)
+<User: User object (3)>
+>>> c=User.objects.get(id=3)
+>>> c.last_name="Pancakes"
+>>> c.save()
+>>> User.objects.get(id=3).__dict__
+{'_state': <django.db.models.base.ModelState object at 0x0000000003F07BB0>, 'id'
+: 3, 'first_name': 'saja', 'last_name': 'Pancakes', 'email_address': 'saja2@yaho
+o.com', 'age': 25, 'created_at': datetime.datetime(2021, 4, 19, 23, 8, 1, 104019
+, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 4, 19, 23, 17, 22, 278116
+, tzinfo=<UTC>)}
+>>> d=User.objects.get(id=2)
+>>> d.delete()
+(1, {'usershell_app.User': 1})
+>>> User.objects.all().__dict__
+{'model': <class 'usershell_app.models.User'>, '_db': None, '_hints': {}, 'query
+': <django.db.models.sql.query.Query object at 0x0000000003EEEF40>, '_result_cac
+he': None, '_sticky_filter': False, '_for_write': False, '_prefetch_related_look
+ups': (), '_prefetch_done': False, '_known_related_objects': {}, '_iterable_clas
+s': <class 'django.db.models.query.ModelIterable'>, '_fields': None}
+>>> User.objects.all()
+<QuerySet [<User: User object (1)>, <User: User object (3)>]>
+>>> User.objects.all().order_by(first_name)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'first_name' is not defined
+>>> User.objects.all().order_by("first_name")
+<QuerySet [<User: User object (1)>, <User: User object (3)>]>
+>>> User.objects.all().order_by("first_name").__dict__
+{'model': <class 'usershell_app.models.User'>, '_db': None, '_hints': {}, 'query
+': <django.db.models.sql.query.Query object at 0x0000000003F07700>, '_result_cac
+he': None, '_sticky_filter': False, '_for_write': False, '_prefetch_related_look
+ups': (), '_prefetch_done': False, '_known_related_objects': {}, '_iterable_clas
+s': <class 'django.db.models.query.ModelIterable'>, '_fields': None}
+>>> User.objects.all().order_by("first_name").values()
+<QuerySet [{'id': 1, 'first_name': 'layla', 'last_name': 'asker', 'email_address
+': 'layla.rashed1@yahoo.com', 'age': 28, 'created_at': datetime.datetime(2021, 4
+, 19, 23, 6, 35, 241108, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 4,
+ 19, 23, 6, 35, 241108, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'saja', 'last_na
+me': 'Pancakes', 'email_address': 'saja2@yahoo.com', 'age': 25, 'created_at': da
+tetime.datetime(2021, 4, 19, 23, 8, 1, 104019, tzinfo=<UTC>), 'updated_at': date
+time.datetime(2021, 4, 19, 23, 17, 22, 278116, tzinfo=<UTC>)}]>
+>>> User.objects.all().order_by("-first_name")
+<QuerySet [<User: User object (3)>, <User: User object (1)>]>
+>>> User.objects.all().order_by("-first_name").value()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'value'
+>>>

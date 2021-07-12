@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojos & Ninjas</title>
+    <style>
+        body{
+
+        }
+        .container{
+
+        }
+        .up{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .down{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-top: 2px solid black;
+            margin: 50px 91px;
+
+        }
+
+        label{
+            line-height: 27px;
+        }
+        label, select{
+            width:200px;
+            height: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="up">
+        <span class="dojo">
+            <h1>Add a Dojo</h1>
+            <form action="/addDojo" method="POST">
+                {% csrf_token %}
+                <label >Name:
+                <input type="text" name="fullname"></label>
+                <br>
+                <label>City:
+                <input type="text" name="city"></label>
+                <br>
+                <label>State:
+                <input type="text" name="state"></label> 
+                <br>
+                <button type="submit">Add</button>
+            </form>
+        </span>
+        <span class="ninja">
+            <h1>Add a Ninja</h1>
+            <form action="/addNinja" method="POST">
+                {% csrf_token %}
+                <label>First Name:
+                <input type="text" name="fname"></label>
+                <br>
+                <label>Last Name:
+                <input type="text" name="lname"></label>
+                <br>
+                <label>Dojo:
+                <select name="dojo" id="" aria-placeholder="- select a dojo -"> 
+                    {% for dojo in all_dojo %}
+                    <option value="{{dojo.id}}">{{dojo.name}}</option> 
+                    {% endfor %}
+                </select>
+                <br>
+                <button type="submit">Add</button>
+            </form>
+        </span>
+        </div>
+        <div class="down">
+        <h1>All the Dojos</h1>
+        <ul>
+            {% for dojo in all_dojo %}
+            <li>{{dojo.name}} at the {{dojo.city}} {{dojo.state}}
+                <ul>
+                    {% for ninja in dojo.ninja.all %}
+                    <li>{{ninja.first_name}} {{ninja.last_name}}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+        </div>
+    </div>
+</body>
+</html>

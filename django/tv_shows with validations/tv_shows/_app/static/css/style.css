@@ -1,0 +1,31 @@
+body{
+    background-color: aliceblue;
+    margin: 0 20px;
+}
+.head{
+    display: flex;
+    justify-content: space-between;
+}
+
+.messages{
+    color: red;
+}
+
+.form-group-network{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.form-group-date{
+    display: inline-block;
+}
+
+#create{
+    display: flex;
+    align-items: center;
+}
+
+.center{
+    display: flex;
+    align-content: center;
+}
